@@ -1,0 +1,131 @@
+{% load static %}
+<style>
+    .header-title h2,
+    .header-title h3 {
+      display: inline-block;
+    }
+    h3 {
+      font-size: 18px;
+      text-align: center;
+      padding: 15px 0px 0px 0px;
+      margin: 0px;
+    }
+
+    table {
+      width: 750px;
+      border-collapse: collapse;
+      /* margin: 0px auto; */
+    }
+
+    /* Zebra striping */
+    tr:nth-of-type(odd) {
+      background: #eee;
+    }
+
+    th {
+      background: #3498db;
+      color: #000000;
+      font-weight: bold;
+    }
+
+    td,
+    th {
+      padding: 1px;
+      padding-top: 1px;
+      /* border: 1px solid #ccc; */
+      text-align: left;
+      font-size: 12px;
+      color: #00475F;
+    }
+
+    .table{
+      padding: 4px 0px 0px 0px;
+      border: 1px solid #00475F;
+      text-align: center;
+      font-size: 12px;
+      color: #00475F;
+    }
+    .agreement{
+      padding: 4px 0px 0px 0px;
+      border-radius: 50px;
+      /* background-color: #1659d9; */
+      text-align: center;
+      }
+    .upper_form{
+      font-size: 20px;
+    }
+
+  </style>
+    <table>
+      <thead>
+        <tr colspan="12" >
+          <th colspan="3"></th>
+          <th colspan="7" style="align-items: center;">
+
+            <img src="./static/agreement/header.png" alt="logo" title="logo" border="0"
+                                                    style="color: #ffffff; max-width:100%; width:288px ;height:auto; font-family: Arial; font-size: 22px;" />
+          </th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <table id='upper_form' >
+          <tr id="header_tr">
+
+            <td colspan="12" style="text-align: center; padding: 5px;"> <span class="agreement" style="font-size: 24px; color: #00475F;  font-weight: bold;">GEBRUIKERSOVEREENKOMST LEASE AUTO </span></td>
+          </tr>
+
+          <tr><td colspan="12">Ondergetekenden :</td></tr>
+          <tr><td colspan="12">• Werkgever: Randstad Groep Nederland B.V., hierna te noemen “werkgever”</td></tr>
+          <tr><td colspan="12">En</td></tr>
+          <tr><td colspan="12">• Werkgever:</td></tr>
+          <tr><td colspan="6">Naam:</td><td colspan="6">{{ context.name }}</td></tr>
+          <tr><td colspan="6">Adres:</td><td colspan="6">{{ context.address }}</td></tr>
+          <tr><td colspan="6">Woonplaats en Postcode:</td><td colspan="6" style="text-align: left;">{{ context.pincode }}</td></tr>
+          <tr><td colspan="6">Personeelsnummer:</td><td colspan="6">{{ context.phone_number }}</td></tr>
+          <tr><td colspan="6">Categorie :</td><td colspan="6">{{ context.category }} </td></tr>
+          <tr><td colspan="12">Hierna te noemen “werknemer”</td></tr>
+
+          <tr><td colspan="12"> Verklaren</td></tr>
+          <tr><td colspan="12">• Aan werknemer wordt door werkgever voor uitoefening van zijn voormelde functie de volgende auto tot wederopzegging ter beschikking gesteld:• Werknemer: </td></tr>
+          <tr><td colspan="6"> Merk / Type:</td><td colspan="6">{{ context.model }}</td></tr>
+          <tr><td colspan="6"> Uitvoering:</td> <td colspan="6">{{ context.performance}}</td></tr>
+          <tr><td colspan="6"> carrosserie:</td> <td colspan="6">{{ context.body}}</td></tr>
+          <tr><td colspan="6"> Brandstof:</td> <td colspan="6">{{ context.fuel}}</td></tr>
+          <tr><td colspan="6"> Jaarkilometrage:</td> <td colspan="6">{{ context.annual_mileage}}</td></tr>
+          <tr><td colspan="6"> Fiscale waarde:</td> <td colspan="6">{{ context.tax_value}}</td></tr>
+          <tr><td colspan="6"> Gekozen opties:</td> <td colspan="3"> {{ context.option1.option }}</td> <td colspan="3"> {{ context.option1.option_value }}</td></tr>
+            <!-- {% for data in context.option %}
+            <tr><td colspan="5">{{data.option}}</td><td colspan="1">{{ data.rate }}</td></tr>
+            {% endfor %} -->
+          {% if context.other_options %}
+          {% for option in context.other_options %}
+          <tr><td colspan="6"></td><td colspan="3">{{ option.option }}</td><td colspan="3">{{ option.option_value }}</td></tr>
+          {% endfor %}
+          {% endif %}
+
+          <tr><td colspan="12"> • Werknemer is bekend en gaat akkoord met de op deze gebruikersovereenkomst van toepassing zijnde Randstad Groep Nederland autoregeling en verklaart deze gebruikersovereenkomst te hebben gesloten met inbegrip van de huidige van toepassing zijnde autoregeling.</td></tr>
+          <tr><td colspan="12"> • Voor het gebruik van de genoemde auto is werknemer conform de autoregeling, aan werkgever de volgende bedragen verschuldigd, welke netto op het salaris in mindering zullen worden gebracht in de eerste 48 maanden.</td></tr>
+          <tr><td>&nbsp;</td></tr>
+          <tr><td colspan="8"> De eigen bijdrage in verband met parttimebijdrage :</td><td colspan="4">{{ context.part_time_contribution }} </td></tr>
+          <tr><td colspan="8"> De luxe eigen bijdrage in verband met gekozen opties :</td> <td colspan="4">{{ context.choosed_option_sum }} </td></tr>
+          <tr style="border-top: 1px solid; border-color: #b8baba;"><td colspan="12"> </td></tr>
+          <tr><td colspan="8"> Totaal maandelijks te verrekenen bedrag incl. BTW :</td> <td colspan="4">{{ context.total }} </td></tr>
+          <tr><td>&nbsp;</td></tr>
+          <tr><td colspan="12"> • Werknemer machtigt werkgever alle krachtens de lease-autoregeling door werknemer aan werkgever verschuldigde bedragen in te houden op de netto salarisbetalingen.</td></tr>
+          <tr><td colspan="12"> • Verplichting van werknemer:</td></tr>
+          <tr><td colspan="12"> • Werknemer verklaart in het bezit te zijn van een in Nederland geldig rijbewijs en zorgt ervoor dat het rijbewijs zijn geldigheid niet verliest zolang hij/zij de beschikking heeft over een auto;</td></tr>
+          <tr><td colspan="12"> • Werknemer is verplicht de instructies en de adviezen van de leasemaatschappij en dealer betreffende het gebruik en onderhoud van de auto op te volgen;</td></tr>
+          <tr><td colspan="12"> Werknemer ziet erop toe dat de auto niet wordt bestuurd door hiertoe onbevoegde personen of door personen, hemzelf inbegrepen, die, om welke reden dan ook onbekwaam zijn de auto te besturen en/of waarvan het rijbewijs is ingenomen.</td></tr>
+          <tr><td colspan="12"> Het voorgaande laat onverlet het bepaalde in de Randstad Groep Nederland geldende lease-autoregeling, alsmede de wettelijke bepalingen verband houden met het gebruik van de auto.</td></tr>
+          <tr><td colspan="12"> Aldus overeengekomen,</td></tr>
+          <tr><td>&nbsp;</td></tr>
+          <tr><td colspan="3"> Werknemer:</td><td colspan="3"> {{ context.name }}</td><td colspan="3">Namens Randstad :</td><td colspan="3">{{ context.organization }}<!-- Company Name --></td></tr>
+          <tr><td colspan="3"> Plaats :</td> <td colspan="3">{{ context.venue }}</td><td colspan="3"> Plaats :</td> <td colspan="3">Arnhem Datum</td></tr>
+          <tr><td colspan="3"> Datum :</td><td colspan="3">{{ context.data }} </td><td colspan="3"> Datum :</td><td colspan="3">22 oktober 2021 Voor Akkoord</td></tr>
+          <tr><td colspan="3"> Voor Akkoord :</td><td colspan="7">{{ context.signature }}</td></tr>
+
+        </table>
+      </tbody>
+    </table>
+  </div>
